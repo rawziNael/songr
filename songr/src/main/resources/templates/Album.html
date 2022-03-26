@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Album</title>
+</head>
+<body>
+<h1>Add an album</h1>
+<form action="/albums" method="POST">
+  <input name="title" type="text" placeholder="Album Title">
+  <input name="artist" type="text" placeholder="Artist">
+  <input name="songCount" type="text" placeholder="Number of Songs">
+  <input name="length" type="text" placeholder="Length in Seconds">
+  <input name="imageUrl" type="text" placeholder="Image Url">
+  <input type="submit">
+</form>
+
+<br><br>
+
+<table>
+  <tr th:each="album: ${albumsList}" class="table-row">
+    ID: <td th:text = "${album.id}"></td>
+    Title: <td th:text = "${album.title}"></td>
+    Artist: <td th:text = "${album.artist}"></td>
+    Song Count: <td th:text = "${album.songCount}"></td>
+    Length: <td th:text = "${album.length}"></td>
+    Image URL: <td th:text = "${album.imageUrl}"></td>
+  </tr>
+</table>
+</body>
+</html>
