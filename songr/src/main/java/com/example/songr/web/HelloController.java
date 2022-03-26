@@ -3,11 +3,11 @@ package com.example.songr.web;
 import com.example.songr.domain.Album;
 import com.example.songr.infrastructure.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ public class HelloController {
     @Autowired
     AlbumRepository albumRepository;
 
+    @ResponseStatus(value = HttpStatus.OK)
     @GetMapping("/hello")
     String hello(@RequestParam(name = "name", required = false, defaultValue = "Rawzi") String name, Model model){
 
@@ -46,5 +47,21 @@ public class HelloController {
 
         return albums;
     }
+
+    //*********************************************lab12**********************************************
+
+    @ResponseBody
+    @PostMapping("/addalbums")
+    public RedirectView createAlbum(@ModelAttribute Album album) {
+        albumRepository.save(album);
+        return new RedirectView("/allalbums");
+    }
+    @ResponseBody
+    @GetMapping("/allalbums")
+    public String showAlbums(Model model) {
+        model.addAttribute("albumsList", albumRepository.findAll());
+        return "Album";
+    }
+
 
 }
