@@ -1,9 +1,6 @@
 package com.example.songr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Album {
@@ -15,6 +12,10 @@ public class Album {
     public int songCount;
     public double length;
     public String imageUrl;
+
+
+    public Album() {
+    }
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
