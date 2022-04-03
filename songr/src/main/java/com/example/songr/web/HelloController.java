@@ -1,7 +1,9 @@
 package com.example.songr.web;
 
 import com.example.songr.domain.Album;
+import com.example.songr.domain.Song;
 import com.example.songr.infrastructure.AlbumRepository;
+import com.example.songr.infrastructure.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ public class HelloController {
 
     @Autowired
     AlbumRepository albumRepository;
+    SongRepository songRepository;
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping("/hello")
@@ -63,5 +66,19 @@ public class HelloController {
         return "Album";
     }
 
+    //*********************************************lab13**********************************************
 
+    @GetMapping(value="/songs")
+    public String getSongs(Model song) {
+        song.addAttribute("songsList", songRepository.findAll());
+        return "songs";
+    }
+
+    @ResponseBody
+    @PostMapping(value="/songs")
+    public RedirectView createSong(@ModelAttribute Song song) {
+        System.out.println(song);
+        songRepository.save(song);
+        return new RedirectView("/songs");
+    }
 }
