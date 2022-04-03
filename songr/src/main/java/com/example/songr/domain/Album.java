@@ -1,6 +1,9 @@
 package com.example.songr.domain;
 
 import javax.persistence.*;
+import java.util.List;
+
+
 
 @Entity
 public class Album {
@@ -12,6 +15,9 @@ public class Album {
     public int songCount;
     public double length;
     public String imageUrl;
+
+    @OneToMany(mappedBy = "album")
+    List<Song> songsList ;
 
 
     public Album() {
