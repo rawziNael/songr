@@ -3,6 +3,8 @@ package com.example.songr.domain;
 import javax.persistence.*;
 import java.util.List;
 
+
+
 @Entity
 public class Album {
     @Id
@@ -16,6 +18,10 @@ public class Album {
 
     @OneToMany(mappedBy = "album")
     List<Song> songsList ;
+
+
+    public Album() {
+    }
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
