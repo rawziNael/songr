@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
+//@NoArgsConstructor
 @RequiredArgsConstructor
 public class Song {
     @Setter(value= AccessLevel.NONE)
@@ -17,7 +17,7 @@ public class Song {
     @Column(name="id", nullable = false)
     private int id ;
 
-    @NonNull
+    //@NonNull
     private String title;
 
     private int length;

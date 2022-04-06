@@ -17,6 +17,9 @@ public class Album {
     @OneToMany(mappedBy = "album")
     List<Song> songsList ;
 
+    public Album() {
+    }
+
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
         this.artist = artist;
