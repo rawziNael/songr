@@ -16,6 +16,8 @@ public class HelloController {
 
     @Autowired
     AlbumRepository albumRepository;
+
+    @Autowired
     SongRepository songRepository;
 
     @ResponseStatus(value = HttpStatus.OK)
@@ -66,14 +68,13 @@ public class HelloController {
     //*********************************************lab13**********************************************
 
     @GetMapping(value="/songs")
-    public String getSongs(Model song) {
-        song.addAttribute("songsList", songRepository.findAll());
+    public String getSongs(Model model) {
+        //model.addAttribute("songsList", songRepository.findAll());
         return "songs";
     }
 
-    @ResponseBody
     @PostMapping(value="/songs")
-    public RedirectView createSong(@ModelAttribute Song song) {
+    public RedirectView createSong( Song song) {
         System.out.println(song);
         songRepository.save(song);
         return new RedirectView("/songs");
