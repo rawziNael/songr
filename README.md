@@ -26,4 +26,11 @@ spring.datasource.username= rawzi
 spring.datasource.password=
 spring.jpa.generate-ddl=true 
 spring.jpq.hibernate.ddl-auto=create
-Gradle command to run: ./gradlew bootrun
+Gradle command to run: ./gradlew bootrun  
+
+# lab 13: Related Resources and Integration Testing  
+
+I add a new 2 endpoints:
+- @GetMapping(value="/songs")
+- @PostMapping(value="/songs")  
+To create a new song
